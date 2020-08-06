@@ -39,7 +39,7 @@ class MenuPage extends Component {
                 <img src={products.img} alt='Rolled ice cream'></img>
                 {products.description}
                 <br />
-                <AddToCartButton />
+                <AddToCartButton onClick={console.log('In onClick')}/>
               </li>
             </ul>) :
             false

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+// import {connect} from 'react-redux';
 
 const styles = theme => ({
   button: {
@@ -15,26 +16,17 @@ const styles = theme => ({
 function OutlinedButtons(props) {
   const { classes } = props;
 
-//   function handleAddToCart(event) {
-//     console.log('In handleAddToCart')
-//   };
-//   onClick={this.handleAddToCart}
+//   const id = this.props.reduxState.menu.id
 
   return (
 
     <div>
-      <Button variant="outlined" className={classes.button} 
-        onClick={()=>{console.log('In onClick')
-        this.props.dispatch({ type: 'Add_TO_CART'})}}>
+      <Button variant="outlined" className={classes.button} size="small"
+        // onClick={()=>{console.log('In onClick')
+        // this.props.dispatch({ type: 'ADD_TO_CART' })}}
+        >
         Add To Cart
       </Button>
-      <input
-        accept="image/*"
-        className={classes.input}
-        id="outlined-button-file"
-        multiple
-        type="file"
-      />
     </div>
   );
 }
