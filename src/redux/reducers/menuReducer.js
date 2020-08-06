@@ -5,8 +5,8 @@ const menuReducer = (state = {}, action) => {
       default:
         return state;
     }
-  };
+  }; // end menuReducer
   
-  // user will be on the redux state at:
+  // menu will be on the redux state at:
   // state.menu
   export default menuReducer;
