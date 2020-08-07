@@ -1,0 +1,9 @@
+.grid {
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    grid-gap: 32px;
+}
+
+img {
+    width: 150px;
+}

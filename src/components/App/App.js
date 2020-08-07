@@ -16,6 +16,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import MenuPage from '../MenuPage/MenuPage';
+import CartPage from '../CartPage/CartPage';
 
 import './App.css';
 
@@ -27,8 +28,9 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="layout">
           <Nav />
+          <div>
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
@@ -55,10 +57,16 @@ class App extends Component {
               path="/menu"
               component={MenuPage}
             />
+
+            <ProtectedRoute 
+              exact
+              path="/cart"
+              component={CartPage}
+            />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
-          <br />
+          </div>
           <Footer />
         </div>
       </Router>

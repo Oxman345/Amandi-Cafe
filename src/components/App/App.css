@@ -3,6 +3,12 @@ body {
     margin: 0px;
 }
 
+.layout {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
+}
+
 .alert {
     background-color: #ff4545;
     margin: 50px;

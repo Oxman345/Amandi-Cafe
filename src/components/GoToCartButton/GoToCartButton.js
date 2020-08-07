@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import {connect} from 'react-redux';
+// import {withRouter} from 'react-router';
+import { useHistory } from 'react-router-dom';
 
 const styles = theme => ({
   button: {
@@ -13,29 +15,20 @@ const styles = theme => ({
   },
 });
 
-class OutlinedButtons extends Component {
-
-
-handleAddToCart = () => {
-    const id = this.props.reduxState.menu.id
-    console.log('In handleAddToCart')
-    this.props.dispatch({ type: 'ADD_TO_CART', payload: id })
-}
-
-  
-render() {
+const OutlinedButtons = (props) => {
+const history = useHistory();
+const { classes } = props;
   return (
 
     <div>
-      <Button variant="outlined" className={this.props.classes.button} size="small"
-        onClick={this.handleAddToCart}
-        >
-        Add to Cart
+      <Button variant="outlined" className={classes.button} size="small"
+        onClick={()=>history.push('/cart')}>
+        Cart
       </Button>
     </div>
   );
 }
-}
+
 
 OutlinedButtons.propTypes = {
   classes: PropTypes.object.isRequired,
@@ -44,3 +37,5 @@ const mapStateToProps = (reduxState)=>({
     reduxState
   })
 export default withStyles(styles)(connect(mapStateToProps)(OutlinedButtons));
+
+// export default withRouter(connect(mapStateToProps))(withStyles(styles)(OutlinedButtons));
