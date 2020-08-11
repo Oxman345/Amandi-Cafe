@@ -14,12 +14,18 @@ const styles = theme => ({
 });
 
 class OutlinedButtons extends Component {
+  // state = {
+  //   id: this.props.product.id
+  // }
 
 
-handleAddToCart = () => {
-    const id = this.props.reduxState.menu.id
-    console.log('In handleAddToCart')
-    this.props.dispatch({ type: 'ADD_TO_CART', payload: id })
+handleAddToCart = (event) => {
+    // console.log('In handleAddToCart', this.props.product );
+    // console.log(this.props.product.id)
+    // this.setState({
+    //   id: event.target.id
+    // })
+    this.props.dispatch({ type: 'ADD_TO_CART', payload: {id: this.props.product.id, price: this.props.product.price }})
 }
 
   

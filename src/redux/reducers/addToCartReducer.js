@@ -1,7 +1,7 @@
-const addToCartReducer = (state = {}, action) => {
-    console.log('In CartReducer')
+const addToCartReducer = (state = [], action) => {
+    console.log('In CartReducer', action.payload)
     switch (action.type) {
-      case 'ADD_TO_CART':
+      case 'SET_CART':
         return action.payload;
       default:
         return state;

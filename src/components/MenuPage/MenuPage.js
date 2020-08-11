@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import GoToCartButton from "../GoToCartButton/GoToCartButton";
+// import GoToCartButton from "../GoToCartButtoncopy/GoToCartButton"
 import ProductCard from "../ProductCard/ProductCard";
 import "./MenuPage.css";
 
@@ -20,10 +21,12 @@ const MenuPage = ({ reduxState, dispatch }) => {
         <GoToCartButton />
       </div>
 
+      {/* {JSON.stringify(reduxState.menu[1])} */}
+
       {reduxState.menu.length > 0 && (
         <div class="container">
           {reduxState.menu.map((product) => (
-            <ProductCard className='btn' product={product} key={product.id} />
+            <ProductCard product={product} key={product.id} />
           ))}
         </div>
       )}
