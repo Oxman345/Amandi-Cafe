@@ -21,7 +21,7 @@ const CartPage = ({ reduxState, dispatch }) => {
 
       {JSON.stringify(reduxState.cart[1])}
 
-      {reduxState.cart.length > 0 && (
+      {/* {reduxState.cart.length > 0 && ( */}
         <div class="container">
           {reduxState.cart.map((product) => (
             <ProductCard product={product} key={product.id} />

@@ -2,10 +2,10 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "ADD_TO_CART" actions
-function* addItem() {
+function* addItem(action) {
     try{
-        const response = yield axios.post('/api/cart');
-        yield console.log('In addItem', response.data);
+        const response = yield axios.post('/api/cart', action.payload);
+        yield console.log('In addItem', response.data, action.payload);
         yield put ({ type: 'SET_CART', payload: response.data })
     }
     catch(error) {

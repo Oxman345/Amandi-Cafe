@@ -20,12 +20,12 @@ class OutlinedButtons extends Component {
 
 
 handleAddToCart = (event) => {
-    // console.log('In handleAddToCart', this.props.product );
+    console.log('In handleAddToCart', this.props.product.id );
     // console.log(this.props.product.id)
     // this.setState({
     //   id: event.target.id
     // })
-    this.props.dispatch({ type: 'ADD_TO_CART', payload: {id: this.props.product.id, price: this.props.product.price }})
+    this.props.dispatch({ type: 'ADD_TO_CART', payload: {product_id: this.props.product.id }})
 }
 
   

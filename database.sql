@@ -24,7 +24,7 @@ CREATE TABLE "products" (
 
 CREATE TABLE "orders" (
     id SERIAL PRIMARY KEY,
-    user_id int,
+    user_id int REFERENCES "user",
     payment BOOLEAN DEFAULT FALSE,
     status BOOLEAN DEFAULT FALSE,
     order_date timestamp DEFAULT now(),
