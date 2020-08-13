@@ -6,7 +6,9 @@ function* addItem(action) {
     try{
         const response = yield axios.post('/api/add-to-cart', action.payload);
         yield console.log('In addItem', response.data, action.payload);
-        // yield put ({ type: 'SET_CART', payload: response.data })
+        // const getResponse = yield axios.get('/api/order')
+        yield console.log('Order id is', response.data)
+        yield put ({ type: 'ORDER_ID', payload: response.data })
     }
     catch(error) {
         console.log( 'Trouble adding item', error )

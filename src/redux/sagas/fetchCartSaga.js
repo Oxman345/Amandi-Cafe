@@ -4,7 +4,8 @@ import { put, takeLatest } from 'redux-saga/effects';
 // worker Saga: will be fired on "ADD_TO_CART" actions
 function* fetchItem(action) {
     try{
-        const response = yield axios.get('/api/fetch-cart', action.payload);
+        console.log('orderId is', action.payload)
+        const response = yield axios.get(`/api/fetch-cart/${action.payload.orderId}`, action.payload);
         yield console.log('In fetchItem', response.data, action.payload);
         yield put ({ type: 'SET_CART', payload: response.data })
     }

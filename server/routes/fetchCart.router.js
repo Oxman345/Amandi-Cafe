@@ -3,7 +3,8 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-router.get('/', rejectUnauthenticated, (req, res) => {
+router.get('/:orderId', rejectUnauthenticated, (req, res) => {
+  console.log(req.params.orderId)
     // return from the orders table WHERE user_id = req.user AND payment = false
     const queryText = `
       SELECT * FROM "items";`;

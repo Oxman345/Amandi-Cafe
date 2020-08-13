@@ -1,17 +1,21 @@
-import React, { useEffect } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import CheckoutButton from "../CheckoutButton/CheckoutButton";
 import CartItemCard from "../CartItemCard/CartItemCard";
 import "./CartPage.css";
 
 
+class CartPage extends Component {
+// const CartPage = ({ reduxState, dispatch }) => {
+  // useEffect(() => {
+  //   //This will activate the saga that will do a get call for cart items
+  //   dispatch({ type: "FETCH_CART", payload: reduxState.orderId });
+  // }, []);
+componentDidMount(){
+  this.props.dispatch({ type: "FETCH_CART", payload: this.props.reduxState.orderId })
+}
 
-const CartPage = ({ reduxState, dispatch }) => {
-  useEffect(() => {
-    //This will activate the saga that will do a get call for cart items
-    dispatch({ type: "FETCH_CART" });
-  }, []);
-
+render() {
   return (
     <>
       <div class="header">
@@ -22,9 +26,9 @@ const CartPage = ({ reduxState, dispatch }) => {
 
       {/* {JSON.stringify(reduxState.cart[1])} */}
 
-      {reduxState.cart.length > 0 && (
+      {this.props.reduxState.cart.length > 0 && (
         <div class="container">
-          {reduxState.cart.map((product) => (
+          {this.props.reduxState.cart.map((product) => (
             <CartItemCard product={product} key={product.id} />
           ))}
         </div>
@@ -32,6 +36,7 @@ const CartPage = ({ reduxState, dispatch }) => {
     </>
   );
 };
+}
 
 //this is used to connect this page to the reduxState and use props anywhere
 const mapStateToProps = (reduxState) => ({
