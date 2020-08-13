@@ -3,7 +3,7 @@ import errors from './errorsReducer';
 import loginMode from './loginModeReducer';
 import user from './userReducer';
 import menu from './menuReducer';
-import cart from './addToCartReducer';
+import cart from './fetchCartReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.

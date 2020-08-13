@@ -15,9 +15,9 @@ const styles = theme => ({
 
 class OutlinedButtons extends Component {
 
-handleAddToCart = (event) => {
-    console.log('In handleAddToCart', this.props.product.id );
-    this.props.dispatch({ type: 'ADD_TO_CART', payload: {product_id: this.props.product.id }})
+handleDeleteItem = (event) => {
+    console.log('In handleDeleteItem', this.props.product.id );
+    this.props.dispatch({ type: 'DELETE_ITEM', payload: {product_id: this.props.product.id }})
 }
 
  
@@ -26,9 +26,9 @@ render() {
 
     <div>
       <Button variant="outlined" className={this.props.classes.button} size="small"
-        onClick={this.handleAddToCart}
+        onClick={this.handleDeleteItem}
         >
-        Add to Cart
+        Remove
       </Button>
     </div>
   );

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import GoToCartButton from "../GoToCartButton/GoToCartButton";
-// import GoToCartButton from "../GoToCartButtoncopy/GoToCartButton"
 import ProductCard from "../ProductCard/ProductCard";
 import "./MenuPage.css";
 

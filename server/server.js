@@ -11,7 +11,8 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const menuRouter = require('./routes/menu.router');
-const cartRouter = require('./routes/cart.router');
+const addToCartRouter = require('./routes/addToCart.router');
+const fetchCartRouter = require('./routes/fetchCart.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -27,7 +28,8 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/menu', menuRouter);
-app.use('/api/cart', cartRouter);
+app.use('/api/add-to-cart', addToCartRouter);
+app.use('/api/fetch-cart', fetchCartRouter);
 
 // Serve static files
 app.use(express.static('build'));

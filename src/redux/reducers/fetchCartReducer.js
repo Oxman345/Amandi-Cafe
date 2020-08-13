@@ -1,4 +1,4 @@
-const addToCartReducer = (state = [], action) => {
+const fetchCartReducer = (state = [], action) => {
     console.log('In CartReducer', action.payload)
     switch (action.type) {
       case 'SET_CART':
@@ -6,8 +6,6 @@ const addToCartReducer = (state = [], action) => {
       default:
         return state;
     }
-  }; // end addToCartReducer
+  };
   
-  // menu will be on the redux state at:
-  // state.cart
-  export default addToCartReducer;
+  export default fetchCartReducer;

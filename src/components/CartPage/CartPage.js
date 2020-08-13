@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import ProductCard from "../ProductCard/ProductCard";
 import CheckoutButton from "../CheckoutButton/CheckoutButton";
+import CartItemCard from "../CartItemCard/CartItemCard";
 import "./CartPage.css";
 
 
 
 const CartPage = ({ reduxState, dispatch }) => {
   useEffect(() => {
-    //This will activate the saga that will do a get call for menu items
+    //This will activate the saga that will do a get call for cart items
+    dispatch({ type: "FETCH_CART" });
   }, []);
 
   return (
@@ -19,12 +20,12 @@ const CartPage = ({ reduxState, dispatch }) => {
         <CheckoutButton />
       </div>
 
-      {JSON.stringify(reduxState.cart[1])}
+      {/* {JSON.stringify(reduxState.cart[1])} */}
 
-      {/* {reduxState.cart.length > 0 && ( */}
+      {reduxState.cart.length > 0 && (
         <div class="container">
           {reduxState.cart.map((product) => (
-            <ProductCard product={product} key={product.id} />
+            <CartItemCard product={product} key={product.id} />
           ))}
         </div>
       )}
