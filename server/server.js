@@ -13,6 +13,7 @@ const userRouter = require('./routes/user.router');
 const menuRouter = require('./routes/menu.router');
 const addToCartRouter = require('./routes/addToCart.router');
 const fetchCartRouter = require('./routes/fetchCart.router');
+const deleteItemRouter = require('./routes/deleteItem.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -30,6 +31,8 @@ app.use('/api/user', userRouter);
 app.use('/api/menu', menuRouter);
 app.use('/api/add-to-cart', addToCartRouter);
 app.use('/api/fetch-cart', fetchCartRouter);
+app.use('/api/delete-item', deleteItemRouter);
+
 
 // Serve static files
 app.use(express.static('build'));

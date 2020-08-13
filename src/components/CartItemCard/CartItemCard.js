@@ -12,7 +12,7 @@ const CartItemCard = ({ product }) => (
       <img src={product.img} alt={product.description}></img>
       <br />
       <div>{product.description}</div>
-      <div onClick={() => alert(`${product.description} added to cart`)}>
+      <div onClick={() => alert(`${product.id} removed`)}>
         <DeleteItemButton product={product} />
       </div>
     </div>
