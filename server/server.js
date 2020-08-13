@@ -14,6 +14,7 @@ const menuRouter = require('./routes/menu.router');
 const addToCartRouter = require('./routes/addToCart.router');
 const fetchCartRouter = require('./routes/fetchCart.router');
 const deleteItemRouter = require('./routes/deleteItem.router');
+const updateProfileRouter = require('./routes/updateProfile.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -32,6 +33,7 @@ app.use('/api/menu', menuRouter);
 app.use('/api/add-to-cart', addToCartRouter);
 app.use('/api/fetch-cart', fetchCartRouter);
 app.use('/api/delete-item', deleteItemRouter);
+app.use('/api/update-profile', updateProfileRouter);
 
 
 // Serve static files

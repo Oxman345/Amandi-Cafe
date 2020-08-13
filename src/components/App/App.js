@@ -17,6 +17,7 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import MenuPage from '../MenuPage/MenuPage';
 import CartPage from '../CartPage/CartPage';
+import CheckoutPage from '../CheckoutPage/CheckoutPage';
 
 import './App.css';
 
@@ -62,6 +63,12 @@ class App extends Component {
               exact
               path="/cart"
               component={CartPage}
+            />
+
+            <ProtectedRoute 
+              exact
+              path="/checkout"
+              component={CheckoutPage}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

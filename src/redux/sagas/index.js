@@ -6,6 +6,7 @@ import menuSaga from './menuSaga';
 import addToCartSaga from './AddToCartSaga';
 import fetchCartSaga from './fetchCartSaga';
 import deleteItemSaga from './DeleteItemSaga';
+import updateProfileSaga from './UpdateProfileSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -22,6 +23,7 @@ export default function* rootSaga() {
     menuSaga(),
     addToCartSaga(),
     fetchCartSaga(),
-    deleteItemSaga()
+    deleteItemSaga(),
+    updateProfileSaga()
   ]);
 }
