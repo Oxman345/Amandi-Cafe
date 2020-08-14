@@ -1,9 +1,9 @@
-const orderIdReducer = (state = {}, action) => {
+const profileReducer = (state = {}, action) => {
     switch (action.type) {
-      case 'ORDER_ID':
+      case 'SET_PROFILE':
         return action.payload;
       default:
         return state;
     }
   }; 
-  export default orderIdReducer;
+  export default profileReducer;

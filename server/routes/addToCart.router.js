@@ -40,7 +40,7 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
       await connection.query('COMMIT;')
       res.send({orderId});
     } catch (err) {
-      console.log('Error on transfer', err);
+      console.log('Error adding to cart', err);
       // Transaction failed, so send with ROLLBACK
       await connection.query('ROLLBACK')
       res.sendStatus(500);

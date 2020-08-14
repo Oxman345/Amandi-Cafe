@@ -2,11 +2,11 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "FETCH_MENU" actions
-function* updateProfile() {
+function* updateProfile(action) {
     try{
-        const response = yield axios.put('/api/update-profile');
-        yield console.log('In updateProfile', response.data);
-        // yield put ({ type: 'SET_PROFILE', payload: response.data})
+        const response = yield axios.put(`/api/update-profile/${action.payload.userId}`, action.payload);
+        yield console.log('In updateProfile', response.data, action.payload);
+        yield put ({ type: 'SET_PROFILE', payload: response.data})
     }
     catch(error) {
         console.log( 'Trouble updating profile', error )

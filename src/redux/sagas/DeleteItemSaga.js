@@ -6,10 +6,10 @@ function* deleteItem(action) {
     try{
         const response = yield axios.delete('/api/delete-item', action.payload);
         yield console.log('In deleteItem', response.data, action.payload);
-        // yield put ({ type: 'SET_CART', payload: response.data })
+        yield put ({ type: 'SET_CART', payload: response.data })
     }
     catch(error) {
-        console.log( 'Trouble adding item', error )
+        console.log( 'Trouble deleting item', error )
     }
 }; // end deleteItem
 
