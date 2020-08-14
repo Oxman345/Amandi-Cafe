@@ -6,18 +6,18 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 
 
-router.put('/:userId', rejectUnauthenticated, (req, res) => {
-    console.log(`put req.body`, req.body);
+router.put('/', rejectUnauthenticated, (req, res) => {
+    console.log(`put req.body`, req.body, req.user.id);
       const profile = req.body
       const queryText = `
       UPDATE "user"
       SET 
-      "first_name" = '$1', 
-      "last_name" = '$2', 
-      "email" = '$3', 
-      "phone_number" = '$4'
+      "first_name" = $1, 
+      "last_name" = $2, 
+      "email" = $3, 
+      "phone_number" = $4
       WHERE 
-      "id" = '$5';`;
+      "id" = $5;`;
       const queryValues = [
         profile.firstName,
         profile.lastName,
