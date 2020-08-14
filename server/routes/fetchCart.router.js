@@ -4,11 +4,11 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 router.get('/:orderId', rejectUnauthenticated, (req, res) => {
-  console.log(req.params.orderId)
+  console.log('fetchCart====>', req.params.orderId)
     // return from the orders table WHERE user_id = req.user AND payment = false
     const queryText = `
     SELECT 
-    orders.id, products.description, products.price, products.img
+    orders.id as order_id, products.description, products.price, products.img, items.id
     FROM orders
     INNER JOIN items
     ON items.order_id = orders.id

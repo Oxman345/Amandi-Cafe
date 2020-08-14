@@ -18,8 +18,7 @@ class OutlinedButtons extends Component {
 handleDeleteItem = (event) => {
     console.log('In handleDeleteItem', this.props.product.id );
     this.props.dispatch({ type: 'DELETE_ITEM', 
-    payload: {product_id: this.props.product.id, this.props.reduxState.orderId }})
-    this.props.dispatch({ type: 'FETCH_CART'})
+    payload: { item_id: this.props.product.id, order_id: this.props.product.order_id }})
 }
 
 render() {

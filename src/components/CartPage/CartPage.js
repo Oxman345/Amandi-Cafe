@@ -24,7 +24,8 @@ render() {
         <CheckoutButton />
       </div>
 
-      {/* {JSON.stringify(reduxState.cart[1])} */}
+      {JSON.stringify(this.props.reduxState.cart[0])}
+      
 
       {this.props.reduxState.cart.length > 0 && (
         <div class="container">
