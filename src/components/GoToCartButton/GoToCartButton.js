@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import {connect} from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 const styles = theme => ({
   button: {
@@ -35,4 +36,4 @@ OutlinedButtons.propTypes = {
 const mapStateToProps = (reduxState)=>({
     reduxState
   })
-export default withStyles(styles)(connect(mapStateToProps)(OutlinedButtons));
+  export default withStyles(styles)(connect(mapStateToProps)(withRouter(OutlinedButtons)));
