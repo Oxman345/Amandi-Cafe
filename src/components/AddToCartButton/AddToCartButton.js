@@ -15,24 +15,22 @@ const styles = theme => ({
 
 class OutlinedButtons extends Component {
 
-handleAddToCart = (event) => {
-    console.log('In handleAddToCart', this.props.product.id );
+  // handleAddToCart will send the product.id to 
+  //   the POST route and add it to the items table
+handleAddToCart = () => {
     this.props.dispatch({ type: 'ADD_TO_CART', payload: {product_id: this.props.product.id }})
 }
 
- 
-render() {
-  return (
-
-    <div>
-      <Button variant="outlined" className={this.props.classes.button} size="small"
-        onClick={this.handleAddToCart}
-        >
-        Add to Cart
-      </Button>
-    </div>
-  );
-}
+  render() {
+    return (
+      <div>
+        <Button variant="outlined" className={this.props.classes.button} size="small"
+          onClick={this.handleAddToCart}>
+          Add to Cart
+        </Button>
+      </div>
+    );
+  }
 }
 
 OutlinedButtons.propTypes = {

@@ -6,11 +6,8 @@ import "./MenuPage.css";
 
 
 class MenuPage extends Component {
-// const MenuPage = ({ reduxState, dispatch }) => {
-//   useEffect(() => {
-//     //This will activate the saga that will do a get call for menu items
-//     dispatch({ type: "FETCH_MENU" });
-//   }, []);
+
+  // componentDidMount is calling the GET route on page load for menu items
 componentDidMount(){
   this.props.dispatch({ type: "FETCH_MENU" })
 }
@@ -18,16 +15,15 @@ componentDidMount(){
 render() {
   return (
     <>
-      <div class="header">
+      <div className="header">
         <div></div>
         <h1>Menu</h1>
         <GoToCartButton />
       </div>
-
-      {/* {JSON.stringify(reduxState.menu[1])} */}
-
       {this.props.reduxState.menu.length > 0 && (
-        <div class="container">
+        <div className="container">
+          {/* This is going through each product in the menu array 
+              and passing it down to ProductCard as a prop */}
           {this.props.reduxState.menu.map((product) => (
             <ProductCard product={product} key={product.id} />
           ))}

@@ -23,4 +23,5 @@ render(){
   const mapStateToProps = (reduxState) => ({
     reduxState,
   });
+  
   export default connect(mapStateToProps)(CartItemCard);

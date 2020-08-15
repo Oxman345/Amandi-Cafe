@@ -1,22 +1,30 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import AddToCartButton from "../AddToCartButton/AddToCartButton";
 
-// const {reduxState} = this.props
-
-const ProductCard = ({ product }) => (
+class ProductCard extends Component {
+  render(){
+    return (
     <div>
-      <div>{`Price: $${product.price}`}</div>
+      <div>
+        {`Price: $${this.props.product.price}`}
+      </div>
       <br />
-      {/* <p>{JSON.stringify(product)}</p> */}
-      <img src={product.img} alt={product.description}></img>
+      <img src={this.props.product.img} 
+      alt={this.props.product.description}>
+      </img>
       <br />
-      <div>{product.description}</div>
-      <div onClick={() => alert(`${product.description} added to cart`)}>
-        <AddToCartButton product={product} />
+      <div>
+        {this.props.product.description}
+      </div>
+      <div onClick={() => 
+        alert(`${this.props.product.description} added to cart`)}>
+        <AddToCartButton product={this.props.product} />
       </div>
     </div>
   );
+}
+}
 
   const mapStateToProps = (reduxState) => ({
     reduxState,

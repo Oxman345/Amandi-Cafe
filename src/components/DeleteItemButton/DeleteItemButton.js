@@ -15,23 +15,25 @@ const styles = theme => ({
 
 class OutlinedButtons extends Component {
 
-handleDeleteItem = (event) => {
-    console.log('In handleDeleteItem', this.props.product.id );
+  // handleDeleteItem will send the item_id and order_id to 
+  //   the DELETE route and remove it from the items table
+handleDeleteItem = () => {
     this.props.dispatch({ type: 'DELETE_ITEM', 
-    payload: { item_id: this.props.product.id, order_id: this.props.product.order_id }})
+    payload: { item_id: this.props.product.id, 
+      order_id: this.props.product.order_id }})
 }
 
-render() {
-  return (
-    <div>
-      <Button variant="outlined" className={this.props.classes.button} size="small"
-        onClick={this.handleDeleteItem}
-        >
-        Remove
-      </Button>
-    </div>
-  );
-}
+  render() {
+    return (
+      <div>
+        <Button variant="outlined" className={this.props.classes.button} 
+        size="small" onClick={this.handleDeleteItem}>
+            {/* This button will remove the item from cart on click */}
+          Remove
+        </Button>
+      </div>
+    );
+  }
 }
 
 OutlinedButtons.propTypes = {

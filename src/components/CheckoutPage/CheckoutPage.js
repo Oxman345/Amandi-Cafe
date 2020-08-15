@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-// import "./CheckoutPage.css";
-
-
 class CheckoutPage extends Component{
 
+  // state is holding the value of each property
   state = {
     firstName: this.props.reduxState.profile.firstName,
     lastName: this.props.reduxState.profile.lastName,
@@ -13,44 +11,40 @@ class CheckoutPage extends Component{
     phoneNumber: this.props.reduxState.profile.phoneNumber
   }
 
-componentDidMount(){
-  // this.props.dispatch({ type: "SET_PROFILE"})
-}
-
+// handleUpdateProfile will send state to PUT route on submit click
 handleUpdateProfile = (event) => {
   event.preventDefault()
-  console.log('In handleUpdateProfile')
   this.props.dispatch({type:"UPDATE_PROFILE", payload: this.state});
   alert('Profile Updated')
 }
 
+// updateFirstName will set the changes to state
 updateFirstName = (event) => {
   event.preventDefault()
-  console.log('In updateFirstName')
   this.setState({
     firstName: event.target.value
   })
 }
 
+// updateLastName will set the changes to state
 updateLastName = (event) => {
   event.preventDefault()
-  console.log('In updateLastName')
   this.setState({
     lastName: event.target.value
   })
 }
 
+// updateEmail will set the changes to state
 updateEmail = (event) => {
   event.preventDefault()
-  console.log('In updateEmail')
   this.setState({
     email: event.target.value
   })
 }
 
+// updatePhoneNumber will set the changes to state
 updatePhoneNumber = (event) => {
   event.preventDefault()
-  console.log('In updatePhoneNumber')
   this.setState({
     phoneNumber: event.target.value
   })
@@ -59,7 +53,7 @@ updatePhoneNumber = (event) => {
 render(){
   return (
     <>
-      <div class="header">
+      <div className="header">
         <div></div>
         <h1>Checkout</h1>
       </div>

@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import {connect} from 'react-redux';
-// import {withRouter} from 'react-router';
-import { useHistory } from 'react-router-dom';
 
 const styles = theme => ({
   button: {
@@ -15,21 +13,20 @@ const styles = theme => ({
   },
 });
 
-const OutlinedButtons = (props) => {
-const history = useHistory();
-const { classes } = props;
-  return (
+class OutlinedButtons extends Component {
 
-    <div>
-      <Button variant="outlined" className={classes.button} size="small"
-        onClick={()=>history.push('/checkout')}
-        >
-        Checkout
-      </Button>
-    </div>
-  );
+  render() {
+    return (
+      <div>
+        <Button variant="outlined" className={this.props.classes.button} 
+          size="small" onClick={()=>this.props.history.push('/checkout')}>
+            {/* This button will take the user to the checkout page on click */}
+          Checkout
+        </Button>
+      </div>
+    );
+  }
 }
-
 
 OutlinedButtons.propTypes = {
   classes: PropTypes.object.isRequired,

@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import {connect} from 'react-redux';
-// import {withRouter} from 'react-router';
-import { useHistory } from 'react-router-dom';
 
 const styles = theme => ({
   button: {
@@ -15,18 +13,19 @@ const styles = theme => ({
   },
 });
 
-const OutlinedButtons = (props) => {
-const history = useHistory();
-const { classes } = props;
-  return (
+class OutlinedButtons extends Component {
 
+  render(){
+  return (
     <div>
-      <Button variant="outlined" className={classes.button} size="small"
-        onClick={()=>history.push('/cart')}>
+      <Button variant="outlined" className={this.props.classes.button} 
+        size="small" onClick={()=>this.props.history.push('/cart')}>
+          {/* This button will take the user to the cart page on click */}
         Cart
       </Button>
     </div>
   );
+}
 }
 
 
@@ -37,5 +36,3 @@ const mapStateToProps = (reduxState)=>({
     reduxState
   })
 export default withStyles(styles)(connect(mapStateToProps)(OutlinedButtons));
-
-// export default withRouter(connect(mapStateToProps))(withStyles(styles)(OutlinedButtons));
