@@ -18,13 +18,13 @@ class CartPage extends Component {
   render() {
     return (
       <>
-        <div class="header">
+        <div className="header">
           <div></div>
           <h1>Cart</h1>
           <GoToCheckoutButton />
         </div>
         {this.props.reduxState.cart.length > 0 && (
-          <div class="container">
+          <div className="container">
             {/* This is going through each product in the cart array 
               and passing it down to CartItemCard as a prop */}
             {this.props.reduxState.cart.map((product) => (
