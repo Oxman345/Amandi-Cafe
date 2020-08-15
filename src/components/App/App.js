@@ -14,7 +14,7 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
+import AdminPage from '../AdminPage/AdminPage';
 import MenuPage from '../MenuPage/MenuPage';
 import CartPage from '../CartPage/CartPage';
 import CheckoutPage from '../CheckoutPage/CheckoutPage';
@@ -34,7 +34,7 @@ class App extends Component {
           <div>
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-            <Redirect exact from="/" to="/home" />
+            <Redirect exact from="/" to="/menu" />
             {/* Visiting localhost:3000/about will show the about page.
             This is a route anyone can see, no login necessary */}
             <Route
@@ -48,8 +48,8 @@ class App extends Component {
             Even though it seems like they are different pages, the user is always on localhost:3000/home */}
             <ProtectedRoute
               exact
-              path="/home"
-              component={UserPage}
+              path="/admin"
+              component={AdminPage}
             />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the menu page instead. */}
