@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import GoToCheckoutButton from "../GoToCheckoutButton/GoToCheckoutButton";
+import Button from "../Button";
+// import GoToCheckoutButton from "../GoToCheckoutButton/GoToCheckoutButton";
 import CartItemCard from "../CartItemCard/CartItemCard";
 import "./CartPage.css";
 
 class CartPage extends Component {
-
-  // componentDidMount is calling our GET route 
+  // componentDidMount is calling our GET route
   //  and sending the orderId to get user cart
   componentDidMount() {
     this.props.dispatch({
@@ -21,7 +21,13 @@ class CartPage extends Component {
         <div className="header">
           <div></div>
           <h1>Cart</h1>
-          <GoToCheckoutButton />
+          <Button
+            variant="secondary"
+            onClick={() => this.props.history.push("/checkout")}
+          >
+            Checkout
+          </Button>
+          {/* <GoToCheckoutButton /> */}
         </div>
         {this.props.reduxState.cart.length > 0 && (
           <div className="container">

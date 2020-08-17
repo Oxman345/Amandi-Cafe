@@ -22,7 +22,9 @@ router.get('/:adminId', rejectUnauthenticated, (req, res) => {
     JOIN "user"
     ON orders.user_id = "user".id
     WHERE orders.payment = FALSE
+    AND orders.status = FALSE
     ORDER BY orders.id;`;
+    //     WHERE orders.payment = FALSE needs to be changed to TRUE once stripe API is connected
     pool.query(queryText)
         .then( (result) => {
             res.send(result.rows);

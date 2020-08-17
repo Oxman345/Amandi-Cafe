@@ -1,0 +1,28 @@
+.productcard-container {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #eee;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.productcard-leftsection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 8px;
+}
+
+.productcard-name {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.productcard-btn-container {
+  width: fit-content;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+}

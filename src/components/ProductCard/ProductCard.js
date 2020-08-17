@@ -1,32 +1,44 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import AddToCartButton from "../AddToCartButton/AddToCartButton";
+import Button from "../Button";
+import "./ProductCard.css";
 
 class ProductCard extends Component {
-  render(){
+  // handleAddToCart will send the product.id to
+  // the POST route and add it to the items table
+  handleAddToCart = () => {
+    this.props.dispatch({
+      type: "ADD_TO_CART",
+      payload: { product_id: this.props.product.id },
+    });
+
+    alert(`${this.props.product.description} added to cart`);
+  };
+
+  render() {
     return (
-    <div>
-      <div>
-        {`Price: $${this.props.product.price}`}
+      <div className="productcard-container">
+        <div className="productcard-leftsection">
+          <div>
+            <div className="productcard-name">
+              {this.props.product.description}
+            </div>
+            <div>${this.props.product.price}</div>
+          </div>
+          <div className="productcard-btn-container">
+            <Button onClick={this.handleAddToCart}>Add to cart</Button>
+          </div>
+        </div>
+        <img
+          src={this.props.product.img}
+          alt={this.props.product.description}
+        />
       </div>
-      <br />
-      <img src={this.props.product.img} 
-      alt={this.props.product.description}>
-      </img>
-      <br />
-      <div>
-        {this.props.product.description}
-      </div>
-      <div onClick={() => 
-        alert(`${this.props.product.description} added to cart`)}>
-        <AddToCartButton product={this.props.product} />
-      </div>
-    </div>
-  );
-}
+    );
+  }
 }
 
-  const mapStateToProps = (reduxState) => ({
-    reduxState,
-  });
-  export default connect(mapStateToProps)(ProductCard);
+const mapStateToProps = (reduxState) => ({
+  reduxState,
+});
+export default connect(mapStateToProps)(ProductCard);

@@ -12,23 +12,23 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
     const userId = req.user.id;
     const productId = req.body.product_id;
   
-  
     // Get a single connection from the pool to do the transaction 
     // THIS IS IMPORTANT - won't work if you don't use the same connection!
     const connection = await pool.connect();
   
     try {
         await connection.query('BEGIN;')
-       
+      // This query is looping through the orders table until it finds 
+      // an order that matches the user_id and hasn't been paid for yet
       const selectOrder = `SELECT * FROM orders WHERE user_id = $1 AND payment = false;`;
+      // This query will be executed in the conditional if no order is 
+      // found with the SelectOrder query. It will also return the newly created id.
       const createOrder = `INSERT INTO orders (user_id) VALUES ($1) RETURNING id;`;
+      // This will add the product_id and order_id into the items table.
       const addProduct = `INSERT INTO items (order_id, product_id) VALUES ($1, $2);`;
         
       const selectOrderQueryResponse = await connection.query(selectOrder, [userId]);
 
-       // Create conditional to SELECT from "orders" where there is a false payment:
-        // otherwise create order
-        let orderId
         if (selectOrderQueryResponse.rows.length === 1){
             orderId = selectOrderQueryResponse.rows[0].id;
         } else {
