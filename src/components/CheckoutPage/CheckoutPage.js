@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+// import { loadStripe } from "@stripe/stripe-js";
+// import { Elements } from "@stripe/react-stripe-js";
+// import Stripe from "../Stripe/Stripe";
 
 class CheckoutPage extends Component{
 
@@ -16,6 +19,12 @@ handleUpdateProfile = (event) => {
   event.preventDefault()
   this.props.dispatch({type:"UPDATE_PROFILE", payload: this.state});
   alert('Profile Updated')
+  this.setState({
+    firstName: "",
+    lastName: '',
+    email: '',
+    phoneNumber: ''
+  })
 }
 
 // updateFirstName will set the changes to state
@@ -51,15 +60,17 @@ updatePhoneNumber = (event) => {
 }
 
 render(){
+
+  // const promise = loadStripe("pk_test_51HBqInBxokwILXMdMQPBnSmPxWRqkfhS9u9V5PjLeeUniScCP6tExKuDal1W6QzfKNZFTuSXsWajtXVjSucOuqoA009zh7bDfW");
+
   return (
     <>
       <div className="header">
-        <div></div>
         <h1>Checkout</h1>
       </div>
 
         <div>
-            <form>
+            <form id="profile">
               <h3>Profile</h3>
                 <label>First Name: </label>
                 <input type="text" placeholder='First Name' 
@@ -77,8 +88,13 @@ render(){
                 <input type="number" placeholder='Phone Number' 
                 value={this.state.phoneNumber} onChange={this.updatePhoneNumber}></input>
                 <br />
-                <input type='submit' onClick={this.handleUpdateProfile}></input>
+                <input type='submit' onClick={this.handleUpdateProfile} value='Place Order'></input>
             </form>
+              <div>
+                {/* <Elements stripe={promise}>
+                  <Stripe />
+                </Elements> */}
+              </div>
         </div>
     </>
   );

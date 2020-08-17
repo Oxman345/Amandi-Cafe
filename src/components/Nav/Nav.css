@@ -9,12 +9,12 @@
 }
 
 .nav {
-  border-bottom: 1px solid #00acb0;
+  border-bottom: 1px solid lightskyblue;
 }
 
 .nav-link {
   float: left;
-  color: #00acb0;
+  color: lightskyblue;
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;
