@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Button from "../Button";
 
 class CartItemCard extends Component {
+
   handleDeleteItem = () => {
     this.props.dispatch({
       type: "DELETE_ITEM",
@@ -11,8 +12,6 @@ class CartItemCard extends Component {
         order_id: this.props.product.order_id,
       },
     });
-
-    alert(`${this.props.product.description} removed`);
   };
   render() {
     return (

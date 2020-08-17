@@ -15,12 +15,13 @@ class AdminPage extends Component {
       <div></div>
       <h1>Admin</h1>
     </div>
+    {JSON.stringify(this.props.reduxState.orders)}
     
     {this.props.reduxState.orders.length > 0 && (
       <div className="container">
         {/* This is going through each orders in the menu array 
             and passing it down to OrdersCard as a prop */}
-        {this.props.reduxState.menu.map((orders) => (
+        {this.props.reduxState.orders.map((orders) => (
           <OrdersCard orders={orders} key={orders.id} />
         ))}
       </div>

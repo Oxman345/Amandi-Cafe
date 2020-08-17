@@ -30,7 +30,7 @@ router.get('/:adminId', rejectUnauthenticated, (req, res) => {
             res.send(result.rows);
         })
         .catch( (error) => {
-            console.log(`***Error on query`,error);
+            console.log(`***Error on fetchOrders query`,error);
             res.sendStatus(500);
         });
   });

@@ -5,19 +5,26 @@ class OrdersCard extends Component {
   render(){
     return (
     <div>
-      <div>
-        <p>{this.props.orders.id}</p>
-      </div>
-      <br />
-      {this.props.orders.first_name}
-      <br />
-      <div>
-        {this.props.product.description}
-      </div>
-      <div onClick={() => 
-        alert(`${this.props.product.description} added to cart`)}>
-        {/* <AddToCartButton product={this.props.product} /> */}
-      </div>
+      <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Order Date</th>
+        </tr>
+        <div>
+            <tr>
+                <td>{this.props.orders.firstName}</td>
+                <td>{this.props.orders.Lastname}</td>
+                <td>{this.props.orders.description}</td>
+                <td>{this.props.orders.price}</td>
+                <td>{this.props.orders.status}</td>
+                <td>{this.props.orders.order_date}</td>
+            </tr>
+        </div>
+      </table>
     </div>
   );
 }
