@@ -15,18 +15,24 @@ class CartItemCard extends Component {
   };
   render() {
     return (
-      <div>
-        <div>{`Price: $${this.props.product.price}`}</div>
-        <br />
+      <div className="productcard-container">
+        <div className="productcard-leftsection">
+          <div>
+            <div className="productcard-name">
+              {this.props.product.description}
+            </div>
+            <div>${this.props.product.price}</div>
+          </div>
+          <div className="productcard-btn-container">
+          <Button variant="secondary" onClick={this.handleDeleteItem}>
+            Remove
+          </Button>  
+          </div>
+        </div>
         <img
           src={this.props.product.img}
           alt={this.props.product.description}
-        ></img>
-        <br />
-        <div>{this.props.product.description}</div>
-        <Button variant="secondary" onClick={this.handleDeleteItem}>
-          Remove
-        </Button>
+        />
       </div>
     );
   }
