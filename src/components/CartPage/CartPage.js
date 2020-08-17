@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Button from "../Button";
-// import GoToCheckoutButton from "../GoToCheckoutButton/GoToCheckoutButton";
 import CartItemCard from "../CartItemCard/CartItemCard";
 import "./CartPage.css";
 
@@ -36,6 +35,11 @@ class CartPage extends Component {
             {this.props.reduxState.cart.map((product) => (
               <CartItemCard product={product} key={product.id} />
             ))}
+            <br />
+            Total: ${this.props.reduxState.cart.reduce(function(acc,product){
+                    return acc + parseFloat(product.price);
+                },0)}
+            {/* Total: ${this.props.reduxState.cart.price * this.props.reduxState.cart.length} */}
           </div>
         )}
       </>
