@@ -39,7 +39,6 @@ class CartPage extends Component {
             Total: ${this.props.reduxState.cart.reduce(function(acc,product){
                     return acc + parseFloat(product.price);
                 },0)}
-            {/* Total: ${this.props.reduxState.cart.price * this.props.reduxState.cart.length} */}
           </div>
         )}
       </>
