@@ -18,7 +18,7 @@ class CheckoutPage extends Component{
 handleUpdateProfile = (event) => {
   event.preventDefault()
   this.props.dispatch({type:"UPDATE_PROFILE", payload: this.state});
-  alert('Profile Updated')
+  alert('Order has been placed')
   this.setState({
     firstName: "",
     lastName: '',
@@ -74,7 +74,7 @@ render(){
               <h3>Profile</h3>
                 <label>First Name: </label>
                 <input type="text" placeholder='First Name' 
-                value={this.state.firstName} onChange={this.updateFirstName}></input>
+                value={this.state.firstName} onChange={this.updateFirstName} required ></input>
                 <br />
                 <label>Last Name: </label>
                 <input type="text" placeholder='Last Name' 

@@ -36,7 +36,7 @@ class CartPage extends Component {
               <CartItemCard product={product} key={product.id} />
             ))}
             <br />
-            Total: ${this.props.reduxState.cart.reduce(function(acc,product){
+            Estimated Total: ${this.props.reduxState.cart.reduce(function(acc,product){
                     return acc + parseFloat(product.price);
                 },0)}
           </div>
