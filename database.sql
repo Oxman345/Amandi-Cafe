@@ -1,9 +1,3 @@
-
--- USER is a reserved keyword with Postgres
--- You must use double quotes in every query that user is in:
--- ex. SELECT * FROM "user";
--- Otherwise you will have errors!
-
 CREATE TABLE "user" (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(55),
@@ -24,28 +18,34 @@ CREATE TABLE "products" (
 
 CREATE TABLE "orders" (
     id SERIAL PRIMARY KEY,
-    user_id int REFERENCES "user",
+    user_id int,
+    FOREIGN KEY (user_id) REFERENCES "user"(id),
     payment BOOLEAN DEFAULT FALSE,
     status BOOLEAN DEFAULT FALSE,
-    order_date timestamp DEFAULT now(),
-    sale_complete timestamp 
-); 
-
-CREATE TABLE "items" (
-    id SERIAL PRIMARY KEY,
-    order_id int, 
-    user_id int,
-    product_id int,
-    quantity int DEFAULT(1),
+    order_date timestamp DEFAULT now()
 );
 
-SELECT * FROM items WHERE user_id = $1;
+CREATE TABLE items (
+    id SERIAL PRIMARY KEY,
+    order_id int, 
+    FOREIGN KEY (order_id) REFERENCES orders(id),
+    product_id int,
+    FOREIGN KEY (product_id) REFERENCES products(id)
+);
 
--- POST sending with addbutton we need this info
-INSERT INTO items (user_id, product_id, quantity, price)
-VALUES ($1,$2,1,$3);
+SELECT * FROM "orders";
 
--- transaction
--- DELETE ALL FROM ITEMS WHERE USER_ID = $1 if payment goes through???
+SELECT * FROM "user";
 
+SELECT * FROM "products";
 
+INSERT INTO "products" ("description", "price", "img")
+VALUES 
+('Cookie Monster', 5.99, 'https://bloximages.chicago2.vip.townnews.com/madison.com/content/tncms/assets/v3/editorial/4/74/4745c65f-879d-5b66-afc9-e6a18d390f96/59e0c7d78dbe1.image.jpg'),
+('Strawberry Supreme', 5.99, 'https://bloximages.chicago2.vip.townnews.com/madison.com/content/tncms/assets/v3/editorial/4/74/474936f8-d8e9-5ca5-b34e-bd4d1e06d5dd/59e0c7d7c2f99.image.jpg'),
+('Macho Mango', 5.99, 'https://www.shopfoleyfirst.com/microsite/photogallery/10337232.jpg'),
+('Coffee Delight', 5.99, 'https://www.shopfoleyfirst.com/tools/products/photos/10440111.jpg'),
+('Matcha Matcha', 5.99, 'https://media-cdn.tripadvisor.com/media/photo-s/10/54/ee/90/matcha-green-tea-ice.jpg'),
+('Vanilla Ice', 5.99, 'https://t4.ftcdn.net/jpg/02/79/58/21/240_F_279582176_2af82sy3Ljs0sgXE4gSBAveSykUzND3F.jpg');
+
+SELECT * FROM "items";
